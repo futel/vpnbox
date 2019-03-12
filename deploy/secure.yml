@@ -8,29 +8,35 @@
   service:
     name: sshd
     state: restarted
-- name: stop and disable firewalld
+- name: stop and enable firewalld
   service:
     name: firewalld
     state: stopped
-    enabled: no
-- name: stop and enable iptables
+    enabled: yes
+- name: stop and disable iptables
   service:
     name: iptables
     state: stopped
-    enabled: yes
-- name: stop and enable ip6tables
+    enabled: no
+- name: stop and disable ip6tables
   service:
     name: ip6tables
     state: stopped
-    enabled: yes
+    enabled: no
+
+
+
+# XXX replace remove
 - name: update iptables rules
   script: local/iptables.sh
 - name: update ip6tables rules
   script: local/ip6tables.sh
 - name: save iptables rules
   command: service iptables save
+#  ignore_errors: yes # XXX this errors until a reboot?
 - name: save ip6tables rules
   command: service ip6tables save
+#  ignore_errors: yes # XXX this errors until a reboot?  
 - name: start iptables
   service:
     name: iptables
