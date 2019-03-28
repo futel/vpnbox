@@ -8,7 +8,8 @@
     dest: "/etc/openvpn/{{ item }}"
   with_items:
     - server.conf
-    - server-tcp.conf    
+    - server-tcp.conf
+    - server-tcp-443.conf
     - ca.crt
     - server.crt
     - server.key
@@ -27,3 +28,4 @@
   with_items:
     - openvpn@server
     - openvpn@server-tcp
+    - openvpn@server-tcp-443
