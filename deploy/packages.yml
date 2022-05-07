@@ -6,17 +6,12 @@
     state: present 
 - name: remove yum packages
   yum:
-    name: "{{ item }}"
+    name:
+      - audit
+      - rpcbind
+      - selinux-policy
+      - selinux-policy-targeted
     state: absent
-  with_items:
-    - "@FCoE Storage Client"
-    - "@iSCSI Storage Client"
-    - "2Network file system client"
-    - "@Storage Availability Tools"
-    - audit
-    - rpcbind
-    - selinux-policy
-    - selinux-policy-targeted
 - name: update yum
   yum:
     name: "*"
