@@ -2,3 +2,4 @@
 - hosts: digitalocean
   tasks:
     - include: deploy/deploy_digitalocean.yml
+# XXX add dns
