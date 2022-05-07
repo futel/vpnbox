@@ -13,14 +13,9 @@ source ./vars
 ./build-key-server server
 cp keys/ca.crt keys/ca.key keys/dh1024.pem keys/server.crt keys/server.csr keys/server.key ~/Documents/futel-vpnbox/creds
 
-# set up client with creds named 'client-foo', do this for each client
+# set up creds named 'client-foo', do this for each client
 source ./vars
 cp ../creds/ca.crt ../creds/ca.key keys # if not there from last step
 ./build-key client-foo # hit return for all questions, confirm sign and commit
 cp keys/client-foo.* ../creds/client
-
-# test
-# set up ../conf/client.conf.ddwrt
-# give client/client-foo.crt client/client-foo.csr
-# client/client-foo.key to client, renaming as client.crt etc
-# set up client with appropriate client.conf as in vpnclient/README
+# give keys/client-foo.* to the client, which must rename them
