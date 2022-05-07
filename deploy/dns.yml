@@ -1,0 +1,22 @@
+---
+- name: load secrets
+  include_vars: "deploy_digitalocean_secrets.yml"
+  no_log: true
+- name: gather information about stage droplet
+  community.digitalocean.digital_ocean_droplet_info:
+    oauth_token: "{{ deploy_access_token }}"  
+    name: vpnbox-stage.phu73l.net
+  register: droplet
+- name: get public network of stage droplet
+  set_fact:
+    ip_address: "{{ item.ip_address }}"
+  loop: "{{ droplet.data[0].networks.v4 | json_query(type) }}"
+  vars:
+    type: "[?type=='public']"
+- debug: msg="droplet IP address {{ ip_address }}"
+- name: point name to droplet
+  digital_ocean_domain:
+    state: present
+    name: "{{ droplet.data[0].name }}"
+    ip: "{{ ip_address }}"
+    oauth_token: "{{ deploy_access_token }}"
