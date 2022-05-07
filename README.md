@@ -13,7 +13,7 @@ server.crt server.csr server.key
 
 create or check out release branch
 
-  ansible-playbook -i deploy/hosts deploy_digitalocean_playbook.yml  --vault-password-file=conf/vault_pass.txt
+  ansible-playbook -i deploy/hosts deploy/deploy_digitalocean_playbook.yml  --vault-password-file=conf/vault_pass.txt
 
 XXX need to do dns here
 
