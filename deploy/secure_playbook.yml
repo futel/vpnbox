@@ -1,0 +1,9 @@
+---
+- hosts: baseinstall
+  become: true
+  vars:
+    src: "../src"
+    local: "../local"
+  tasks:
+    - include: users.yml
+    - include: secure.yml

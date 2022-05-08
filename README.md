@@ -17,8 +17,9 @@ create or check out release branch
 
 wait for DNS to propagate with "nslookup vpnbox-stage.phu73l.net"
 
-deploy stage:
+# deploy stage droplet:
 
+  ansible-playbook -i deploy/hosts deploy/secure_playbook.yml
   ansible-playbook -i deploy/hosts playbook.yml --vault-password-file=conf/vault_pass.txt
 
 test:

@@ -10,9 +10,9 @@
     key: "{{ item }}"
     exclusive: yes
   with_file:
-    - src/id_rsa.pub
+    - "{{ src }}/id_rsa.pub"
 - name: allow nopasswd sudo for futel user
   copy:
-    src: src/etc/sudoers.d/futel
+    src: "{{ src }}/etc/sudoers.d/futel"
     dest: /etc/sudoers.d/futel
     mode: "u=r"

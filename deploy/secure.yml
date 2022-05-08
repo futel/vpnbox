@@ -1,39 +1,47 @@
+# We are using iptables, the more modern toolkit is firewalld and we may
+# need to convert to that at some point.
 ---
-# firewall, port, ssh configuration
-- name: write sshd config
-  copy:
-    src: src/etc/ssh/sshd_config
-    dest: /etc/ssh/sshd_config
-- name: restart sshd
-  service:
-    name: sshd
-    state: restarted
+- name: install yum packages
+  yum:
+    name:
+      - iptables-services
+      - firewalld
+    state: present
 - name: stop and disable firewalld
-  service:
+  ansible.builtin.systemd:
     name: firewalld
     state: stopped
     enabled: no
+    masked: yes
+- name: write sshd config
+  copy:
+    src: "{{ src }}/etc/ssh/sshd_config"
+    dest: /etc/ssh/sshd_config
+- name: restart sshd
+  ansible.builtin.systemd:
+    name: sshd
+    state: restarted
 - name: enable iptables
-  service:
+  ansible.builtin.systemd:
     name: iptables
     enabled: yes
 - name: enable ip6tables
-  service:
+  ansible.builtin.systemd:
     name: ip6tables
     enabled: yes
 - name: update iptables rules
-  script: local/iptables.sh
+  script: "{{ local }}/iptables.sh"
 - name: update ip6tables rules
-  script: local/ip6tables.sh
+  script: "{{ local }}/ip6tables.sh"
 - name: save iptables rules
   shell: iptables-save >/etc/sysconfig/iptables
 - name: save ip6tables rules
   shell: ip6tables-save >/etc/sysconfig/ip6tables
 - name: start iptables
-  service:
+  ansible.builtin.systemd:
     name: iptables
     state: restarted
 - name: start ip6tables
-  service:
+  ansible.builtin.systemd:
     name: ip6tables
     state: restarted
