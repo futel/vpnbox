@@ -2,10 +2,10 @@
 # misc config of distro packages
 - name: write postfix config
   copy:
-    src: src/etc/postfix/main.cf
+    src: "{{ src }}/etc/postfix/main.cf"
     dest: /etc/postfix/main.cf
 - name: restart postfix
-  service:
+  ansible.builtin.systemd:
     name: postfix
     state: restarted
 - name: set timezone with zoneinfo
@@ -16,14 +16,11 @@
     force: yes
 - name: set timezone with clock config
   copy:
-    src: src/etc/sysconfig/clock
+    src: "{{ src }}/etc/sysconfig/clock"
     dest: /etc/sysconfig/clock
     force: yes
-- name: start ntpd
-  service:
-    name: ntpd
+- name: start chronyd
+  ansible.builtin.systemd:
+    name: chronyd
     state: started
-- name: enable ntpd service
-  service:
-    name: ntpd
-    enabled: yes
+    enabled: yes    

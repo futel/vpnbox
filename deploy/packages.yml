@@ -2,7 +2,7 @@
 # distro package setup and installation
 - name: install selinux bindings, required since we start with selinux
   yum:
-    name: libselinux-python
+    name: python3-libselinux
     state: present 
 - name: remove yum packages
   yum:
@@ -11,28 +11,30 @@
       - rpcbind
       - selinux-policy
       - selinux-policy-targeted
+      - sendmail
+      - dracut-squash
     state: absent
+- name: install epel yum package
+  yum:
+    name:
+      - epel-release
 - name: update yum
   yum:
     name: "*"
     state: latest
-- name: install epel-release yum package
-  yum:
-    name: epel-release
-    state: present
+# should be replaced with "enablerepo: powertools" when installing packages?
+- name: enable CentOS PowerTools repository for epel
+  command: dnf config-manager --set-enabled powertools
 - name: install yum packages
   yum:
-    name: "{{ item }}"
+    name:
+      - chrony
+      - cyrus-sasl-plain
+      - openssh
+      - openssh-server
+      - openssh-clients
+      - openssl-devel
+      - openvpn
+      - postfix
+      - rsync
     state: present
-  with_items:
-    - iptables-services
-    - firewalld
-    - ntp
-    - man
-    - vim-enhanced
-    - openssh
-    - openssh-server
-    - openssh-clients
-    - openssl-devel
-    - cyrus-sasl-plain
-    - openvpn

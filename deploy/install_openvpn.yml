@@ -4,8 +4,8 @@
   no_log: true
 - name: copy openvpn config
   copy:
-    src: "src/etc/openvpn/{{ item }}"
-    dest: "/etc/openvpn/{{ item }}"
+    src: "{{ src }}/etc/openvpn/server/{{ item }}"
+    dest: "/etc/openvpn/server/{{ item }}"
   with_items:
     - server.conf
     - server-tcp.conf    
@@ -13,17 +13,17 @@
     - server.crt
     - server.key
     - dh1024.pem
-- name: set ip forwarding in proc and the sysctl conf file and reload
+- name: set ip forwarding in proc (and not the sysctl conf file?) and reload
   sysctl:
     name: net.ipv4.ip_forward
     value: 1
     # sysctl_set: yes
     reload: yes    
 - name: enable and restart openvpn services
-  service:
+  ansible.builtin.systemd:
     name: "{{ item }}"
-    enabled: yes
     state: started
+    enabled: yes
   with_items:
-    - openvpn@server
-    - openvpn@server-tcp
+    - openvpn-server@server
+    - openvpn-server@server-tcp
