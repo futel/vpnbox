@@ -4,10 +4,7 @@ In conf, have:
 id_rsa
 vault_pass.txt
 
-in creds, have:
-(or create by following README.ssl)
-ca.crt ca.key dh1024.pem
-server.crt server.csr server.key
+In src/etc/openvpn/server, have server creds made by README-ssl.txt.
 
 # create droplet and subdomain:
 
