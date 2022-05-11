@@ -12,7 +12,7 @@
     - ca.crt
     - server.crt
     - server.key
-    - dh1024.pem
+    - dh.pem
 - name: set ip forwarding in proc (and not the sysctl conf file?) and reload
   sysctl:
     name: net.ipv4.ip_forward
