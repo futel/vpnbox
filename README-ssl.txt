@@ -15,7 +15,7 @@ cd easy-rsa
 ./easyrsa init-pki
 # create the ca creds
 ./easyrsa build-ca nopass
-# creds are at pki/ca.crt, pki/ca.key
+# ca cert and key are at pki/ca.crt, pki/ca.key
 
 # create server request and key
 # start at vpnbox directory
