@@ -1,0 +1,6 @@
+---
+- hosts: digitalocean
+  vars:
+    hostname: vpnbox-prod-bar.phu73l.net    
+  tasks:
+    - include: dns.yml

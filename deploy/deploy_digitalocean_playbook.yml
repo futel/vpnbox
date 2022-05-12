@@ -1,5 +1,7 @@
 ---
 - hosts: digitalocean
+  vars:
+    hostname: vpnbox-stage.phu73l.net
   tasks:
     - include: deploy_digitalocean.yml
     - include: dns.yml

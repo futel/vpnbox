@@ -41,34 +41,41 @@ There must be at least one prod vpn server running:
 - vpnbox-prod-bar.phu73l.net
 - vpnbox-prod-baz.phu73l.net
 
-We will promote stage to the one not currently running, and then decomission the currently running one.
+We will promote stage to one not currently running. When other servers can serve all clients, we can decomission the currently running one.
+
+## promote stage to a vacant name 
 
 - one of:
   - ansible-playbook -i deploy/hosts deploy/hostname_playbook_foo.yml
   - ansible-playbook -i deploy/hosts deploy/hostname_playbook_bar.yml
   - ansible-playbook -i deploy/hosts deploy/hostname_playbook_baz.yml
 - rename vpnbox-stage droplet to new vpnbox-prod-foo|bar|baz.phu73l.net
-- create A record for vpnbox-prod-foo|bar.phu73l.net, or change A record for vpnbox-prod-foo|bar.phu73l.net to point to new vpnbox-prod-foo|bar.phu73l.net
-- remove A record for vpnbox-stage
-- wait for DNS to propagate
-- refresh iptables on asteriskserver prod, in futel-installation repo
-        ansible-playbook -i deploy/hosts secure_playbook_prod.yml
-- stop openvpn on old vpnbox-prod-foo|bar.phu73l.net
+- one of:
+  - ansible-playbook -i deploy/hosts deploy/dns_promote_playbook_foo.yml  --vault-password-file=conf/vault_pass.txt
+  - ansible-playbook -i deploy/hosts deploy/dns_promote_playbook_bar.yml  --vault-password-file=conf/vault_pass.txt
+  - ansible-playbook -i deploy/hosts deploy/dns_promote_playbook_baz.yml  --vault-password-file=conf/vault_pass.txt
+- wait for DNS to propagate with "nslookup vpnbox-prod-foo|bar|baz.phu73l.net"
+- refresh iptables on asteriskserver prod: in futel-installation repo,
+        ansible-playbook -i deploy/hosts --limit prod deploy/secure_playbook.yml
+
+# decomission a running prod
+
+- stop openvpn on old vpnbox-prod-foo|bar|baz.phu73l.net
         systemctl stop openvpn-server@server
         systemctl stop openvpn-server@server-tcp
 - XXX wait 1-30 minutes for sip peers to become reachable?
-- test that new vpnbox-prod-foo|bar.phu73l.net is being used
+- test that new vpnbox-prod-foo|bar|baz.phu73l.net is being used
   - sip show peers on futel-prod
-  - service openvpn@server status on new vpnbox-prod-foo|bar.phu73l.net
-  - service openvpn@server-tcp status on new vpnbox-prod-foo|bar.phu73l.net  
-- cat /etc/openvpn/openvpn-status.log on new vpnbox-prod-foo|bar.phu73l.net
-- cat /etc/openvpn/openvpn-status-tcp.log on new vpnbox-prod-foo|bar.phu73l.net  
-- make a snapshot of old vpnbox-prod-foo|bar.phu73l.net
-- destroy droplet old vpnbox-prod-foo|bar.phu73l.net
-- remove A record for vpnbox-prod-foo|bar.phu73l.net
-- remove snapshots of vpnbox-prod-foo|bar.phu73l.net except for most recent
+  - service openvpn@server status on new vpnbox-prod-foo|bar|baz.phu73l.net
+  - service openvpn@server-tcp status on new vpnbox-prod-foo|bar|baz.phu73l.net  
+- cat /etc/openvpn/openvpn-status.log on new vpnbox-prod-foo|bar|baz.phu73l.net
+- cat /etc/openvpn/openvpn-status-tcp.log on new vpnbox-prod-foo|bar|baz.phu73l.net  
+- make a snapshot of old vpnbox-prod-foo|bar|baz.phu73l.net
+- destroy droplet old vpnbox-prod-foo|bar|baz.phu73l.net
+- remove A record for vpnbox-prod-foo|bar|baz.phu73l.net
+- remove snapshots of vpnbox-prod-foo|bar|baz.phu73l.net except for most recent
 
 ## monitor prod
 
-    ssh -F local/ssh_config vpnbox-prod-bar.phu73l.net
+    ssh -F local/ssh_config vpnbox-prod-bar|baz.phu73l.net
     view connected clients in /etc/openvpn/openvpn-status.log
