@@ -1,6 +1,6 @@
-## Deploy a vpn server to Digital Ocean
+# Deploy a vpn server to Digital Ocean
 
-# have conf and creds
+## have conf and creds
 
 In conf, have:
 - id_rsa
@@ -8,7 +8,7 @@ In conf, have:
 
 In src/etc/openvpn/server, have server creds made by README-ssl.txt.
 
-# create droplet and subdomain
+## create droplet and subdomain
 
 create or check out release branch
 
@@ -16,25 +16,25 @@ create or check out release branch
 
 wait for DNS to propagate with "nslookup vpnbox-stage.phu73l.net"
 
-# deploy stage droplet
+## deploy stage droplet
 
-  ansible-playbook -i deploy/hosts deploy/secure_playbook.yml
-  ansible-playbook -i deploy/hosts deploy/playbook.yml --vault-password-file=conf/vault_pass.txt
+- ansible-playbook -i deploy/hosts deploy/secure_playbook.yml
+- ansible-playbook -i deploy/hosts deploy/playbook.yml --vault-password-file=conf/vault_pass.txt
 
-# test
+## test
 
-  Verify that service runs on server:
-  ssh -t -F local/ssh_config vpnbox-stage.phu73l.net 'systemctl status openvpn@server.service'
-  Verify that local box can contact TCP server:
-  nmap -Pn -p 1194 vpnbox-stage.phu73l.net
-  Verify that local box can contact UDP server:  
-  sudo nmap -Pn -sU -p 1194 vpnbox-stage.phu73l.net
-  Verify that client works:
-  set up client as directed in futel-vpnclient project
-  verify that traffic for client to vpnbox_stage goes through vpnbox_stage
-  view connected clients on server in /etc/openvpn/openvpn-status.log
-
-## promote stage to prod
+    Verify that service runs on server:
+    ssh -t -F local/ssh_config vpnbox-stage.phu73l.net 'systemctl status openvpn@server.service'
+    Verify that local box can contact TCP server:
+    nmap -Pn -p 1194 vpnbox-stage.phu73l.net
+    Verify that local box can contact UDP server:  
+    sudo nmap -Pn -sU -p 1194 vpnbox-stage.phu73l.net
+    Verify that client works:
+    set up client as directed in futel-vpnclient project
+    verify that traffic for client to vpnbox_stage goes through vpnbox_stage
+    view connected clients on server in /etc/openvpn/openvpn-status.log
+    
+# promote stage to prod
 
 There must be at least one prod vpn server running:
 - vpnbox-prod-foo.phu73l.net
@@ -43,11 +43,10 @@ There must be at least one prod vpn server running:
 
 We will promote stage to the one not currently running, and then decomission the currently running one.
 
-one of:
-- ansible-playbook -i deploy/hosts deploy/hostname_playbook_foo.yml
-- ansible-playbook -i deploy/hosts deploy/hostname_playbook_bar.yml
-- ansible-playbook -i deploy/hosts deploy/hostname_playbook_baz.yml
-
+- one of:
+  - ansible-playbook -i deploy/hosts deploy/hostname_playbook_foo.yml
+  - ansible-playbook -i deploy/hosts deploy/hostname_playbook_bar.yml
+  - ansible-playbook -i deploy/hosts deploy/hostname_playbook_baz.yml
 - rename vpnbox-stage droplet to new vpnbox-prod-foo|bar|baz.phu73l.net
 - create A record for vpnbox-prod-foo|bar.phu73l.net, or change A record for vpnbox-prod-foo|bar.phu73l.net to point to new vpnbox-prod-foo|bar.phu73l.net
 - remove A record for vpnbox-stage
