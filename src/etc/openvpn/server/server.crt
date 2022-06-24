@@ -1,76 +1,87 @@
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 1 (0x1)
-    Signature Algorithm: sha1WithRSAEncryption
-        Issuer: C=US, ST=CA, L=SanFrancisco, O=Fort-Funston, OU=changeme, CN=changeme/name=changeme/emailAddress=mail@host.domain
+        Serial Number:
+            7c:40:2c:64:6d:30:12:91:4f:75:93:15:2d:8d:d3:34
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=Easy-RSA CA
         Validity
-            Not Before: Apr 14 07:21:42 2014 GMT
-            Not After : Apr 11 07:21:42 2024 GMT
-        Subject: C=US, ST=CA, L=SanFrancisco, O=Fort-Funston, OU=changeme, CN=server/name=changeme/emailAddress=mail@host.domain
+            Not Before: May 10 22:37:04 2022 GMT
+            Not After : Apr 24 22:37:04 2025 GMT
+        Subject: CN=server
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
-                Public-Key: (1024 bit)
+                RSA Public-Key: (2048 bit)
                 Modulus:
-                    00:c2:74:7b:96:64:45:0b:8c:70:c2:60:ba:7d:7b:
-                    35:7e:ef:4b:ad:1d:2c:b6:70:6b:60:02:42:cf:86:
-                    cf:8f:13:cd:a0:6b:25:80:19:a1:43:5c:e6:5c:02:
-                    30:61:01:a7:8e:8e:e4:2a:18:ab:d7:b2:a3:c6:c1:
-                    c6:8f:84:f5:74:44:67:38:fb:06:f3:e4:4d:8c:4c:
-                    a8:5d:f6:f6:33:a1:21:1d:b5:9b:7a:f2:2a:0d:94:
-                    35:8a:e3:3c:37:89:cc:93:af:00:11:27:3d:bc:a4:
-                    89:c3:c5:c9:96:c5:e3:8a:a3:58:0c:25:4a:9d:c1:
-                    6b:ae:78:5b:85:91:cb:05:69
+                    00:d8:4e:71:94:c6:67:d0:c3:98:aa:68:f2:26:4f:
+                    37:26:58:64:f8:50:d8:01:be:cf:05:79:76:2e:a0:
+                    2a:4e:9e:6f:cc:5e:71:36:68:1b:c4:f7:0d:02:e4:
+                    8f:d0:e2:5b:72:06:7f:38:1a:b9:ef:f6:3b:59:15:
+                    74:a2:1f:e7:bd:09:04:dd:cc:9e:ea:1b:55:6e:47:
+                    b4:5a:55:11:c6:f7:82:4f:bb:e0:3b:d9:2d:69:37:
+                    52:37:24:7d:cc:b5:75:5e:03:a1:52:25:a4:f6:74:
+                    68:ae:09:f0:47:8d:df:c8:98:43:4b:cd:98:ae:d7:
+                    af:fa:39:36:3d:3f:ab:e3:bc:50:ca:1f:80:12:f7:
+                    77:af:e0:3a:f9:28:1d:84:b6:7f:e0:fa:25:fa:a4:
+                    35:20:6a:0b:1a:af:9b:91:6b:d6:75:88:53:bb:93:
+                    9b:a9:65:07:9c:1c:f1:04:39:a3:67:5b:77:8d:f5:
+                    5c:2d:93:5f:d1:ff:c0:e9:f6:95:fe:4c:6e:6e:04:
+                    18:1c:96:80:56:49:10:50:f3:b8:74:58:7d:db:55:
+                    37:28:c4:f1:6f:f9:e6:1f:b5:57:8e:3d:f0:0a:a4:
+                    ee:6b:c4:af:5f:d3:a5:58:dc:95:bf:07:fe:9d:a1:
+                    62:54:d7:7f:da:76:aa:04:80:39:d7:2d:b5:4e:ef:
+                    64:65
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
             X509v3 Basic Constraints: 
                 CA:FALSE
-            Netscape Cert Type: 
-                SSL Server
-            Netscape Comment: 
-                Easy-RSA Generated Server Certificate
             X509v3 Subject Key Identifier: 
-                62:8B:2D:32:1E:63:46:86:79:49:C7:6B:83:87:A0:FD:29:A6:84:E8
+                B7:31:25:40:15:58:12:A1:4D:60:7C:7B:BD:52:8B:60:13:69:F4:19
             X509v3 Authority Key Identifier: 
-                keyid:B5:2E:01:E0:DA:AC:DC:20:4E:3D:72:43:25:49:F4:39:C0:D1:B0:DD
-                DirName:/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=changeme/CN=changeme/name=changeme/emailAddress=mail@host.domain
-                serial:80:50:6C:8E:87:D2:95:A9
+                keyid:90:A3:80:99:53:E5:5A:4F:59:0A:4C:97:DD:8B:6E:EA:D5:69:67:9D
+                DirName:/CN=Easy-RSA CA
+                serial:24:37:FD:A4:90:3D:D8:79:C3:1F:B6:C1:AB:EF:5F:B1:34:8B:99:16
 
             X509v3 Extended Key Usage: 
                 TLS Web Server Authentication
             X509v3 Key Usage: 
                 Digital Signature, Key Encipherment
-    Signature Algorithm: sha1WithRSAEncryption
-         9f:fb:a2:e8:cf:3d:34:01:ba:39:8a:6e:9f:e8:1c:14:f3:26:
-         c2:cd:86:51:03:1a:a4:7d:52:a0:c3:2c:4a:d4:ab:35:94:c7:
-         8c:31:00:5e:5a:27:5a:8a:b4:7c:4a:69:55:9d:00:e8:23:2a:
-         c7:c0:17:93:30:86:e2:e5:97:27:18:a1:b5:48:a8:05:3c:79:
-         9c:a0:63:0d:ac:2d:55:f2:e4:98:3a:82:7d:12:1a:dd:00:33:
-         0e:82:c0:65:44:61:51:42:9b:78:8f:97:02:05:a5:ea:5d:55:
-         eb:6b:bf:78:93:44:cc:96:95:97:be:5b:1f:8a:34:72:b1:10:
-         a8:32
+            X509v3 Subject Alternative Name: 
+                DNS:server
+    Signature Algorithm: sha256WithRSAEncryption
+         2d:70:91:af:64:e6:a7:f4:0b:72:28:3e:18:19:35:6e:ff:4b:
+         55:87:69:88:7b:7c:36:da:4a:d7:68:56:c6:f9:5d:13:53:94:
+         d4:2c:de:0e:16:81:c4:e5:47:28:a1:11:2c:fc:7a:e4:8d:72:
+         3b:54:5c:d8:77:47:d6:60:5b:2b:de:45:86:a7:1a:c9:79:be:
+         aa:73:bd:8f:64:51:10:a8:86:9d:6e:cc:d8:bf:17:d9:47:d3:
+         03:67:aa:4d:2e:c9:ce:a2:19:cd:59:50:7b:92:c8:fd:5a:2e:
+         48:41:44:c8:bc:91:c6:df:05:7e:bf:0e:5f:a4:ae:fc:ef:ab:
+         cf:46:2c:49:16:b2:38:bb:4c:39:f8:34:3e:c0:a7:c5:55:7e:
+         71:4e:24:47:70:6c:fa:82:66:ab:14:18:59:c8:d8:e3:c0:40:
+         52:3e:96:02:72:62:ef:c0:7b:58:a4:3f:e9:b9:44:6f:1a:49:
+         85:08:a2:49:93:36:9b:25:59:b1:71:e9:6b:7d:f8:a7:3a:27:
+         8b:ab:24:33:1e:c4:13:51:48:77:cc:38:62:46:1a:3b:62:82:
+         d4:6d:f9:c8:9d:37:99:02:31:44:3b:78:37:97:62:d0:cc:48:
+         7e:e9:ba:16:23:a4:60:99:3e:e9:e9:f9:a0:81:ba:a5:b6:74:
+         e0:35:9a:84
 -----BEGIN CERTIFICATE-----
-MIIELzCCA5igAwIBAgIBATANBgkqhkiG9w0BAQUFADCBojELMAkGA1UEBhMCVVMx
-CzAJBgNVBAgTAkNBMRUwEwYDVQQHEwxTYW5GcmFuY2lzY28xFTATBgNVBAoTDEZv
-cnQtRnVuc3RvbjERMA8GA1UECxMIY2hhbmdlbWUxETAPBgNVBAMTCGNoYW5nZW1l
-MREwDwYDVQQpEwhjaGFuZ2VtZTEfMB0GCSqGSIb3DQEJARYQbWFpbEBob3N0LmRv
-bWFpbjAeFw0xNDA0MTQwNzIxNDJaFw0yNDA0MTEwNzIxNDJaMIGgMQswCQYDVQQG
-EwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMGA1UE
-ChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTEPMA0GA1UEAxMGc2Vy
-dmVyMREwDwYDVQQpEwhjaGFuZ2VtZTEfMB0GCSqGSIb3DQEJARYQbWFpbEBob3N0
-LmRvbWFpbjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwnR7lmRFC4xwwmC6
-fXs1fu9LrR0stnBrYAJCz4bPjxPNoGslgBmhQ1zmXAIwYQGnjo7kKhir17KjxsHG
-j4T1dERnOPsG8+RNjEyoXfb2M6EhHbWbevIqDZQ1iuM8N4nMk68AESc9vKSJw8XJ
-lsXjiqNYDCVKncFrrnhbhZHLBWkCAwEAAaOCAXMwggFvMAkGA1UdEwQCMAAwEQYJ
-YIZIAYb4QgEBBAQDAgZAMDQGCWCGSAGG+EIBDQQnFiVFYXN5LVJTQSBHZW5lcmF0
-ZWQgU2VydmVyIENlcnRpZmljYXRlMB0GA1UdDgQWBBRiiy0yHmNGhnlJx2uDh6D9
-KaaE6DCB1wYDVR0jBIHPMIHMgBS1LgHg2qzcIE49ckMlSfQ5wNGw3aGBqKSBpTCB
-ojELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRUwEwYDVQQHEwxTYW5GcmFuY2lz
-Y28xFTATBgNVBAoTDEZvcnQtRnVuc3RvbjERMA8GA1UECxMIY2hhbmdlbWUxETAP
-BgNVBAMTCGNoYW5nZW1lMREwDwYDVQQpEwhjaGFuZ2VtZTEfMB0GCSqGSIb3DQEJ
-ARYQbWFpbEBob3N0LmRvbWFpboIJAIBQbI6H0pWpMBMGA1UdJQQMMAoGCCsGAQUF
-BwMBMAsGA1UdDwQEAwIFoDANBgkqhkiG9w0BAQUFAAOBgQCf+6Lozz00Abo5im6f
-6BwU8ybCzYZRAxqkfVKgwyxK1Ks1lMeMMQBeWidairR8SmlVnQDoIyrHwBeTMIbi
-5ZcnGKG1SKgFPHmcoGMNrC1V8uSYOoJ9EhrdADMOgsBlRGFRQpt4j5cCBaXqXVXr
-a794k0TMlpWXvlsfijRysRCoMg==
+MIIDZzCCAk+gAwIBAgIQfEAsZG0wEpFPdZMVLY3TNDANBgkqhkiG9w0BAQsFADAW
+MRQwEgYDVQQDDAtFYXN5LVJTQSBDQTAeFw0yMjA1MTAyMjM3MDRaFw0yNTA0MjQy
+MjM3MDRaMBExDzANBgNVBAMMBnNlcnZlcjCCASIwDQYJKoZIhvcNAQEBBQADggEP
+ADCCAQoCggEBANhOcZTGZ9DDmKpo8iZPNyZYZPhQ2AG+zwV5di6gKk6eb8xecTZo
+G8T3DQLkj9DiW3IGfzgaue/2O1kVdKIf570JBN3MnuobVW5HtFpVEcb3gk+74DvZ
+LWk3Ujckfcy1dV4DoVIlpPZ0aK4J8EeN38iYQ0vNmK7Xr/o5Nj0/q+O8UMofgBL3
+d6/gOvkoHYS2f+D6JfqkNSBqCxqvm5Fr1nWIU7uTm6llB5wc8QQ5o2dbd431XC2T
+X9H/wOn2lf5Mbm4EGByWgFZJEFDzuHRYfdtVNyjE8W/55h+1V4498Aqk7mvEr1/T
+pVjclb8H/p2hYlTXf9p2qgSAOdcttU7vZGUCAwEAAaOBtTCBsjAJBgNVHRMEAjAA
+MB0GA1UdDgQWBBS3MSVAFVgSoU1gfHu9UotgE2n0GTBRBgNVHSMESjBIgBSQo4CZ
+U+VaT1kKTJfdi27q1WlnnaEapBgwFjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0GCFCQ3
+/aSQPdh5wx+2wavvX7E0i5kWMBMGA1UdJQQMMAoGCCsGAQUFBwMBMAsGA1UdDwQE
+AwIFoDARBgNVHREECjAIggZzZXJ2ZXIwDQYJKoZIhvcNAQELBQADggEBAC1wka9k
+5qf0C3IoPhgZNW7/S1WHaYh7fDbaStdoVsb5XRNTlNQs3g4WgcTlRyihESz8euSN
+cjtUXNh3R9ZgWyveRYanGsl5vqpzvY9kURCohp1uzNi/F9lH0wNnqk0uyc6iGc1Z
+UHuSyP1aLkhBRMi8kcbfBX6/Dl+krvzvq89GLEkWsji7TDn4ND7Ap8VVfnFOJEdw
+bPqCZqsUGFnI2OPAQFI+lgJyYu/Ae1ikP+m5RG8aSYUIokmTNpslWbFx6Wt9+Kc6
+J4urJDMexBNRSHfMOGJGGjtigtRt+cidN5kCMUQ7eDeXYtDMSH7puhYjpGCZPunp
++aCBuqW2dOA1moQ=
 -----END CERTIFICATE-----
