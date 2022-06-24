@@ -2,6 +2,8 @@
 
 We will create credentials for a certificate authority, OpenVPN server, and OpenVPN client.
 We will create all credentials on the same local machine, although this is not recommended.
+Note that the credentials for the CA and server should only be created once, doing it again may
+overwrite the existing credentials.
 
 ## set up openvpn server and certificate authority creds with easy-rsa
 
@@ -45,7 +47,7 @@ cd easy-rsa
 openvpn --genkey --secret ta.key
 # pre-shared key is at ./ta.key
 
-# create diffie-helman key paramaters file
+# create diffie-helman key parameters file
 # note that we need this because we are not using elliptic curve
 # start at vpnbox directory
 cd server
