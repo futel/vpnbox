@@ -6,7 +6,7 @@ In conf, have:
 - id_rsa
 - vault_pass.txt
 
-In src/etc/openvpn/server, have server creds made by README-ssl.txt.
+In src/etc/openvpn/server, have server.key creds made by README-ssl.txt
 
 ## create droplet and subdomain
 
