@@ -75,7 +75,14 @@ We will promote stage to one not currently running. When other servers can serve
 - remove A record for vpnbox-prod-foo|bar|baz.phu73l.net
 - remove snapshots of vpnbox-prod-foo|bar|baz.phu73l.net except for most recent
 
-## monitor prod
+# XXX add client
+
+update server.conf with appropriate routes
+update ccd
+push to prod
+systemctl restart openvpn-server@server
+
+# monitor prod
 
     ssh -F local/ssh_config vpnbox-prod-bar|baz.phu73l.net
     view connected clients in /etc/openvpn/openvpn-status.log
