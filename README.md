@@ -41,7 +41,7 @@ There must be at least one prod vpn server running:
 - vpnbox-prod-bar.phu73l.net
 - vpnbox-prod-baz.phu73l.net
 
-We will promote stage to one not currently running. When other servers can serve all clients, we can decomission the currently running one.
+We will promote stage to one not currently running. When other servers can serve all clients, we can decommission the currently running one. The old server must be decommisioned before clients join the new one.
 
 ### promote stage to a vacant name 
 
@@ -55,21 +55,20 @@ We will promote stage to one not currently running. When other servers can serve
   - ansible-playbook -i deploy/hosts deploy/dns_promote_playbook_bar.yml  --vault-password-file=conf/vault_pass.txt
   - ansible-playbook -i deploy/hosts deploy/dns_promote_playbook_baz.yml  --vault-password-file=conf/vault_pass.txt
 - wait for DNS to propagate with "nslookup vpnbox-prod-foo|bar|baz.phu73l.net"
+  - XXX note that we also need to wait for the asterisk server to get the new DNS address before iptables, so check from there too!
 - refresh iptables on asteriskserver prod: in futel-installation repo,
-        ansible-playbook -i deploy/hosts --limit prod deploy/secure_playbook.yml
+        ansible-playbook -i deploy/hosts deploy/update_iptables_playbook.yml
 
-# Decommission a running prod
+### Decommission a running prod
 
 - stop openvpn on old vpnbox-prod-foo|bar|baz.phu73l.net
         systemctl stop openvpn-server@server
-        systemctl stop openvpn-server@server-tcp
 - XXX wait 1-30 minutes for sip peers to become reachable?
 - test that new vpnbox-prod-foo|bar|baz.phu73l.net is being used
   - sip show peers on futel-prod
   - service openvpn@server status on new vpnbox-prod-foo|bar|baz.phu73l.net
-  - service openvpn@server-tcp status on new vpnbox-prod-foo|bar|baz.phu73l.net  
-- cat /etc/openvpn/openvpn-status.log on new vpnbox-prod-foo|bar|baz.phu73l.net
-- cat /etc/openvpn/openvpn-status-tcp.log on new vpnbox-prod-foo|bar|baz.phu73l.net  
+  - cat /etc/openvpn/server/openvpn-status.log on new vpnbox-prod-foo|bar|baz.phu73l.net
+- halt old vpnbox-prod-foo|bar|baz.phu73l.net
 - make a snapshot of old vpnbox-prod-foo|bar|baz.phu73l.net
 - destroy droplet old vpnbox-prod-foo|bar|baz.phu73l.net
 - remove A record for vpnbox-prod-foo|bar|baz.phu73l.net
