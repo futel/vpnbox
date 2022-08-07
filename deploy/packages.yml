@@ -30,6 +30,7 @@
     name:
       - chrony
       - cyrus-sasl-plain
+      - dnsmasq
       - openssh
       - openssh-server
       - openssh-clients

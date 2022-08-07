@@ -1,0 +1,11 @@
+# We are using iptables, the more modern toolkit is firewalld and we may
+# need to convert to that at some point.
+---
+- name: update iptables rules, now that we have the tunnel interface
+  script: "{{ local }}/update_iptables.sh"
+- name: save iptables rules
+  shell: iptables-save >/etc/sysconfig/iptables
+# - name: restart iptables
+#   ansible.builtin.systemd:
+#     name: iptables
+#     state: restarted

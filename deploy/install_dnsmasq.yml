@@ -1,0 +1,13 @@
+---
+- name: copy dnsmasq config
+  copy:
+    src: "{{ src }}/etc/{{ item }}"
+    dest: "/etc/{{ item }}"
+  with_items:
+    - dnsmasq.conf
+    - dnsmasq_hosts
+- name: enable and restart dnsmasq
+  ansible.builtin.systemd:
+    name: dnsmasq
+    state: started
+    enabled: yes

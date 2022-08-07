@@ -3,6 +3,7 @@
   become: true
   vars:
     src: "../src"
+    local: "../local"    
     ansible_user: futel
     ansible_port: 42422
     ansible_ssh_private_key_file: conf/id_rsa
@@ -10,3 +11,5 @@
     - include: packages.yml
     - include: config.yml
     - include: install_openvpn.yml
+    - include: install_dnsmasq.yml
+    - include: update_iptables.yml
